@@ -54,7 +54,19 @@ public ResponseEntity<Void>insert(@RequestBody UserDTO userDto){
 	  URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri(); //retorna a uri com usuario cadastrado no header                        
     return ResponseEntity.created(uri).build();  
 			
-		}
+}
+
+@RequestMapping(value="/{id}",method=RequestMethod.PUT) 
+public ResponseEntity<Void>update(@RequestBody UserDTO userDto, @PathVariable String id){
+	  User usuario = service.fromDTO(userDto);
+	  usuario.setId(id);
+	  usuario = service.update(usuario);
+	  return ResponseEntity.noContent().build();
+			
+}
+
+
+
 
 @RequestMapping(value="/{id}",method=RequestMethod.DELETE) 
 public ResponseEntity<Void> delete (@PathVariable String id){

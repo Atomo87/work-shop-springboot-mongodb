@@ -43,6 +43,20 @@ public void delete(String id) {
 repo.deleteById(id);
 	 
 }
+public User update(User obj) {
+	Optional<User> newObj = repo.findById(obj.getId());
+	updateData(newObj,obj);
+	return repo.save(newObj.get());
+	
+}
+public void updateData(Optional<User> newObj, User user) {
+	newObj.get().setEmail(user.getEmail());
+	newObj.get().setNome(user.getNome());
+	
+	
+}
+
+
 
 public User fromDTO(UserDTO dto) {
 		return new User(dto.getEmail(),dto.getNome(),dto.getId());
