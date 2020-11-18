@@ -51,7 +51,7 @@ public ResponseEntity<Void>insert(@RequestBody UserDTO userDto){
 	  User usuario = service.fromDTO(userDto);
 	  usuario = service.insert(usuario);
 	  URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(usuario.getId()).toUri(); //retorna a uri com usuario cadastrado no header                        
-    return ResponseEntity.created(uri).build();
+    return ResponseEntity.created(uri).build();  
 			
 		}
 	
