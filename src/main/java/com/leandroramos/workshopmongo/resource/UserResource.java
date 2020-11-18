@@ -31,6 +31,7 @@ public class UserResource {
 		//lista.addAll(Arrays.asList(maria,joana)); // inclui objetos no array	
 	@Autowired
 	private UserService service;
+	
 @RequestMapping(method=RequestMethod.GET) 
 public ResponseEntity<List<UserDTO>> findAll(){
   List<User> lista = service.findAll();
@@ -54,5 +55,15 @@ public ResponseEntity<Void>insert(@RequestBody UserDTO userDto){
     return ResponseEntity.created(uri).build();  
 			
 		}
+
+@RequestMapping(value="/{id}",method=RequestMethod.DELETE) 
+public ResponseEntity<Void> delete (@PathVariable String id){
+	service.delete(id);
+    return ResponseEntity.noContent().build();
+			
+		}
+
+
+
 	
 }
