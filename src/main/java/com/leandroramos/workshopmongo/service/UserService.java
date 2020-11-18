@@ -38,7 +38,13 @@ public User insert(User user) {
  
 	
 }
-	public User fromDTO(UserDTO dto) {
+
+public void delete(String id) {
+repo.deleteById(id);
+	 
+}
+
+public User fromDTO(UserDTO dto) {
 		return new User(dto.getEmail(),dto.getNome(),dto.getId());
 		
 	}
