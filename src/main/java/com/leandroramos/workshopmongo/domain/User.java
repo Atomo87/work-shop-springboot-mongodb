@@ -2,10 +2,13 @@ package com.leandroramos.workshopmongo.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="users")
@@ -18,6 +21,10 @@ private String nome;
 private String email;
 @Id
 private String id;
+
+@DBRef(lazy = true)
+private List<Post> lista = new ArrayList<>();
+
 
 @CreatedDate
 private Date createdDate;
@@ -35,6 +42,14 @@ public User() {
 	
 }
 
+
+
+public List<Post> getLista() {
+	return lista;
+}
+public void setLista(List<Post> lista) {
+	this.lista = lista;
+}
 public String getNome() {
 	return nome;
 }
