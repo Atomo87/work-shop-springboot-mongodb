@@ -1,7 +1,4 @@
 package com.leandroramos.workshopmongo.repository;
-
-import javax.validation.ReportAsSingleViolation;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

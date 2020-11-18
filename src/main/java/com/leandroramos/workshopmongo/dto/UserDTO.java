@@ -2,6 +2,8 @@ package com.leandroramos.workshopmongo.dto;
 
 import java.io.Serializable;
 
+import com.leandroramos.workshopmongo.domain.User;
+
 public class UserDTO implements Serializable{
 private static final long serialVersionUID = 1L;
 private String id;
@@ -10,8 +12,10 @@ private String email;
 public UserDTO(){
 	
 }
-public UserDTO(String id,String nome,String email){
-	
+public UserDTO(User usuario){
+	this.email = usuario.getEmail();
+	this.nome = usuario.getNome();
+	this.id = usuario.getId();
 }
 public String getId() {
 	return id;
